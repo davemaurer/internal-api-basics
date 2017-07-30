@@ -13,6 +13,7 @@ group :development, :test do
   gem 'byebug', platform: :mri
   gem 'factory_girl_rails'
   gem 'rspec-rails'
+  gem 'pry'
 end
 
 group :development do
