@@ -32,4 +32,17 @@ describe "items api" do
     expect(response).to be_success
     expect(item.name).to eq(item_params[:name])
   end
+
+  it "updates an item" do
+    id = create(:item).id
+    previous_name = Item.last.name
+    item_params = { name: "Blaster" }
+
+    put "/api/v1/items/#{id}", params: { item: item_params }
+    item = Item.find(id)
+
+    expect(response).to be_success
+    expect(item.name).to_not eq(previous_name)
+    expect(item.name).to eq("Blaster")
+  end
 end
